@@ -1,6 +1,6 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: purple; icon-glyph: picture;
+// icon-color: purple; icon-glyph: image;
 const VERSION = '1.0.1';
 
 const DEBUG = false;
