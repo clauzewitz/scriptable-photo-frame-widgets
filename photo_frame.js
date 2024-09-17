@@ -1,7 +1,7 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: purple; icon-glyph: picture;
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 
 const DEBUG = false;
 const log = (args) => {
@@ -10,6 +10,8 @@ const log = (args) => {
         console.log(args);
     }
 };
+
+const WIDGET_FAMILY = Device.isPad() ? ['small', 'medium', 'large', 'extraLarge'] : ['small', 'medium', 'large'];
 
 // DO NOT EDIT BEYOND THIS LINE ------------------
 const MENU_PROPERTY = {
@@ -31,7 +33,7 @@ const CommonUtil = {
     
         return isValid;
     },
-    compareVersion: function (version1 = '', version2 = '') {
+    compareVersion: (version1 = '', version2 = '') => {
         version1 = version1.replace(/\.|\s|\r\n|\r|\n/gi, '');
         version2 = version2.replace(/\.|\s|\r\n|\r|\n/gi, '');
 
@@ -157,7 +159,7 @@ const MENU_ROWS = {
         title: 'Preview Widget',
         subtitle: 'Provides a preview for testing.',
         onSelect: async () => {
-            const options = ['Small', 'Medium', 'Large', 'Cancel'];
+            const options = [...WIDGET_FAMILY, 'Cancel'];
             const resp = await presentAlert('Preview Widget', options);
     
             if (resp === options.length - 1) {
