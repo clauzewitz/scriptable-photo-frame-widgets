@@ -11,7 +11,7 @@ const log = (args) => {
     }
 };
 
-const WIDGET_FAMILY = Device.isPad() ? ['small', 'medium', 'large', 'extraLarge'] : ['small', 'medium', 'large'];
+const WIDGET_FAMILY = Device.isPad() ? ['Small', 'Medium', 'Large', 'ExtraLarge'] : ['Small', 'Medium', 'Large'];
 
 // DO NOT EDIT BEYOND THIS LINE ------------------
 const MENU_PROPERTY = {
@@ -47,7 +47,7 @@ const CommonUtil = {
 
 const PhotoFrameClient = {
     //----------------------------------------------
-    initialize: () => {
+    initialize: function () {
         try {
             this.USES_ICLOUD = module.filename.includes('Documents/iCloud~');
             this.fm = this.USES_ICLOUD ? FileManager.iCloud() : FileManager.local();
