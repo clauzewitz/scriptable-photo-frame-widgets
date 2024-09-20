@@ -9,3 +9,6 @@
 |                     |
 | ------------------- |
 | ![]() |
+
+## Reference
+[Scriptable Icon Glyph](https://github.com/nlawler1737/Scriptable/blob/main/iconGlyphCss.txt)
