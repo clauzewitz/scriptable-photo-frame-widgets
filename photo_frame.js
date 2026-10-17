@@ -1,7 +1,7 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: purple; icon-glyph: image;
-const VERSION = '1.0.1';
+const VERSION = '1.0.2';
 
 const DEBUG = false;
 const log = (args) => {
@@ -34,14 +34,23 @@ const CommonUtil = {
         return isValid;
     },
     compareVersion: function (version1 = '', version2 = '') {
-        version1 = version1.replace(/\.|\s|\r\n|\r|\n/gi, '');
-        version2 = version2.replace(/\.|\s|\r\n|\r|\n/gi, '');
+        const v1 = version1.trim().split('.');
+        const v2 = version2.trim().split('.');
 
-        if (!this.isNumber(version1) || !this.isNumber(version2)) {
+        if (![...v1, ...v2].every(v => this.isNumber(v))) {
             return false;
         }
 
-        return version1 < version2;
+        // compare each segment numerically so that 1.0.9 < 1.0.10
+        for (let i = 0; i < Math.max(v1.length, v2.length); i++) {
+            const diff = Number(v1[i] || 0) - Number(v2[i] || 0);
+
+            if (diff !== 0) {
+                return diff < 0;
+            }
+        }
+
+        return false;
     }
 };
 
